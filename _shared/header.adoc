@@ -1,0 +1,22 @@
+++++
+<style>
+.reveal .title h2 {
+	font-size: 1.75em;
+}
+</style>
+<div class="imageblock diagram" style=""><img src="images/java.png" alt="java" width=400px></div>
+<h4>By <br>Narendran Solai Sridharan</h4>
+++++
+:backend: revealjs
+:revealjsdir: ../../reveal.js
+:revealjs_theme: nipa-night
+:revealjs_controls: true
+:revealjs_progress: false
+:revealjs_slideNumber: false
+:revealjs_history: true
+:revealjs_center: true
+:revealjs_transition: slide
+:revealjs_backgroundTransition: fade
+:revealjs_parallaxBackgroundImage: images/background0.jpg
+:revealjs_parallaxBackgroundSize: 3000px 2000px
+:imagedir: images

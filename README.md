@@ -10,8 +10,10 @@ $ bundle config --local github.https true
 $ bundle --path=.bundle/gems --binstubs=.bundle/.bin
 ```
 # How to Convert adoc to html?
+Fork [reveal.js](https://github.com/hakimel/reveal.js)
+Check out the forked copy of reveal.js, use the relative path in the command.
 Use the below command, <br/>
-``` $ bundle exec asciidoctor-revealjs -a revealjsdir=https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0 <adoc_file_path>```
+``` $ bundle exec asciidoctor-revealjs -a revealjsdir=../../reveal.js <adoc_file_path>```
 
 
 

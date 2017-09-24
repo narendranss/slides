@@ -1,23 +1,86 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Title Slide</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/theme/black.css" id="theme"><link href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/css/zenburn.css" rel="stylesheet"><script>document.write( '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section class="title" data-state="title"><h1>Title Slide</h1></section><section id="_slide_one"><h2>Slide One</h2><div class="ulist"><ul><li><p>Foo</p></li><li><p>Bar</p></li><li><p>World</p></li></ul></div></section>
-<section id="_slide_two"><h2>Slide Two</h2><div class="paragraph"><p>Hello World - Good Bye Cruel World</p></div>
-<aside class="notes"><div class="paragraph"><p>Actually things aren&#8217;t that bad</p></div></aside></section>
-<section id="_slide_three" data-background-color="yellow"><h2>Slide Three</h2><div class="paragraph"><p>Is very yellow</p></div></section>
-<section id="_the_great_goat" data-background-image="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg" data-background-size="contain"></section>
-<section id="_nice_background" data-background-video="https://my.video/file.mp4" data-background-video-loop data-background-video-muted><h2>Nice background!</h2></section>
-<section id="_a_youtube_video" data-background-iframe="https://www.youtube.com/embed/LaApqL4QjH8?rel=0&start=3&enablejsapi=1&autoplay=1&loop=1&controls=0&modestbranding=1"></section>
-<section id="_zoom_zoom" data-transition="zoom"><h2>Zoom zoom</h2><div class="paragraph"><p>This slide will override the presentation transition and zoom!</p></div></section>
-<section id="_speed" data-transition-speed="fast"><h2>Speed</h2><div class="paragraph"><p>Choose from three transition speeds: default, fast or slow!</p></div></section>
-<section id="_slide_four"><h2>Slide Four</h2><div class="ulist"><ul><li class="fragment"><p>this</p></li><li class="fragment"><p>is</p></li><li class="fragment"><p>revealed</p></li><li class="fragment"><p>gradually</p></li></ul></div></section>
-<section><section id="_slide_six"><h2>Slide Six</h2><div class="paragraph"><p>Top slide</p></div></section><section id="_slide_six_one"><h2>Slide Six.One</h2><div class="paragraph"><p>This is a vertical subslide</p></div></section></section></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/head.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Java 9 Features</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="../../reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="../../reveal.js/css/theme/nipa-night.css" id="theme"><link href="../../reveal.js/lib/css/zenburn.css" rel="stylesheet"><script>document.write( '<link rel="stylesheet" href="../../reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section class="title" data-state="title"><h1>Java 9 Features</h1><div class="preamble"><style>
+.reveal .title h2 {
+	font-size: 1.75em;
+}
+</style>
+<div class="imageblock diagram" style=""><img src="images/java.png" alt="java" width=400px></div>
+<h4>By <br>Narendran Solai Sridharan</h4>
+<link rel="stylesheet" href="../_highlight.js/styles/monokai-sublime.css">
+<script src="../_highlight.js/highlight.pack.js"></script>
+<script>
+	window.onload = function() {
+		hljs.configure({
+			tabReplace: '    ',
+			languages: [ 'java' ]
+		})
+		var codes = document.getElementsByTagName('code');
+		for(var i = 0; i < codes.length; i++) {
+			hljs.highlightBlock(codes.item(i));
+		}
+		hljs.initHighlightingOnLoad();
+	}
+</script></div></section>
+<section id="_features_by_categories"><h2>Features by Categories</h2><div class="imageblock diagram" style=""><img src="images/java-9-features.png" alt="java 9 features"></div>
+<aside class="notes"><div class="paragraph"><p>Despite there are many features present in JDK 9, we will only see few features which might be frequently use in Java 9. We can categorize like&#8230;&#8203;</p></div></aside></section>
+<section id="_notable_categories"><h2>Notable Categories</h2><div class="ulist"><ul><li><p>Tooling</p></li><li><p>API Enhancements</p></li><li><p>Important Under the hood Changes</p></li><li><p>New Standards</p></li></ul></div></section>
+<section><section id="_tooling" data-transition="zoom"><h2>Tooling</h2></section><section id="_important_new_tools"><h2>Important New Tools</h2><div class="ulist"><ul><li><p>jshell</p></li><li><p>jdeps</p></li><li><p>jLink</p></li><li><p>jmod</p></li><li><p>jdeprscan</p></li></ul></div></section><section id="_tool_enhancements"><h2>Tool Enhancements</h2><div class="ulist"><ul><li><p>javac</p></li><li><p>java</p></li><li><p>jar</p></li><li><p>javadoc</p></li></ul></div></section><section id="_jlink"><h2>jlink</h2></section><section id="_jshell"><h2>jshell</h2><div class="paragraph"><p>REPL - Read, Evaluate, Print and Loop</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code>&gt; ~ jshell
+|  Welcome to JShell -- Version 9-ea
+|  For an introduction type: /help intro
+
+jshell&gt; 3 + 4 * 7
+$1 ==&gt; 31
+
+jshell&gt; int add(int a, int b) {
+...&gt;   return a+b;
+...&gt; }
+|  created method add(int,int)
+
+jshell&gt; add(25, $1)
+$3 ==&gt; 56</code></pre></div></div></section><section id="_java_artifacts"><h2>Java Artifacts</h2><div class="ulist"><ul><li><p>jmod</p></li><li><p>jlink &amp; jimage</p></li><li><p>MR jar for Java library release management</p></li></ul></div></section></section>
+<section><section id="_api_enhancements"><h2>API Enhancements</h2><div class="paragraph"><p>There are various small changes. Even if we don&#8217;t leverage JPMS, once we onboard Java 9, we can make use of these small enhancements immediately.</p></div></section><section id="_collection_factories"><h2>Collection Factories</h2><div class="listingblock"><div class="content"><pre class="highlight"><code>/* Comment sections would break ... */
+List&lt;Integer&gt; listOfNumbers = List.of(1, 2, 3, 4, 5
+                                        /*, null*/);
+
+Set&lt;Integer&gt; setOfNumbers = Set.of(1, 2, 3, 4, 5/*, 1*/);
+
+Map&lt;String, String&gt; mapOfString =
+    Map.of("key1", "value1", "key2", "value2");
+
+Map&lt;String, String&gt; moreMapOfString =
+    Map.ofEntries(
+        Map.entry("key1", "value1"),
+        Map.entry("key2", "value2")/*,
+        Map.entry("key1", "value3")*/
+);</code></pre></div></div></section><section id="_stream_enhancements"><h2>Stream Enhancements</h2></section><section id="_try_with_resource"><h2>Try with Resource</h2></section><section id="_diamond_operator"><h2>Diamond Operator</h2></section><section id="_reactive_programming_flow_api"><h2>Reactive Programming Flow API</h2></section><section id="_deprecated_annotation_enhancement"><h2>Deprecated Annotation Enhancement</h2></section></section>
+<section><section id="_important_under_the_hood_changes"><h2>Important Under the hood Changes</h2></section><section id="_compact_string"><h2>Compact String</h2></section><section id="_default_gc_collector_g1"><h2>Default GC Collector G1</h2></section></section>
+<section><section id="_new_standards"><h2>New Standards</h2></section><section id="_http_api"><div class="paragraph"><p>HTTP API</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code>/**
+ * The HTTP API functions asynchronously
+ * and synchronously. In
+ * asynchronous mode,
+ * work is done in threads (ExecutorService).
+ */
+public static void main(String[] args) throws Exception {
+  HttpClient.getDefault()
+    .request(URI.create("https://www.exxcellent.de"))
+    .GET()
+    .responseAsync() // CompletableFuture :D
+    .thenAccept(httpResponse -&gt;
+        out.println(httpResponse
+        .body(HttpResponse.asString()))
+    );
+  Thread.sleep(999); // Give worker thread some time.
+}</code></pre></div></div></section></section></div></div><script src="../../reveal.js/lib/js/head.min.js"></script><script src="../../reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
 Reveal.initialize({
   // Display controls in the bottom right corner
   controls: true,
   // Display a presentation progress bar
-  progress: true,
+  progress: false,
   // Display the page number of the current slide
   slideNumber: false,
   // Push each slide change to the browser history
-  history: false,
+  history: true,
   // Enable keyboard shortcuts for navigation
   keyboard: true,
   // Enable the slide overview mode
@@ -49,7 +112,7 @@ Reveal.initialize({
   previewLinks: false,
   // Theme (e.g., beige, black, league, night, serif, simple, sky, solarized, white)
   // NOTE setting the theme in the config no longer works in reveal.js 3.x
-  //theme: Reveal.getQueryHash().theme || 'black',
+  //theme: Reveal.getQueryHash().theme || 'nipa-night',
   // Transition style (e.g., none, fade, slide, convex, concave, zoom)
   transition: Reveal.getQueryHash().transition || 'slide',
   // Transition speed (e.g., default, fast, slow)
@@ -59,9 +122,9 @@ Reveal.initialize({
   // Number of slides away from the current that are visible
   viewDistance: 3,
   // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
-  parallaxBackgroundImage: '',
+  parallaxBackgroundImage: 'images/background0.jpg',
   // Parallax background size in CSS syntax (e.g., "2100px 900px")
-  parallaxBackgroundSize: '',
+  parallaxBackgroundSize: '3000px 2000px',
 
   // The "normal" size of the presentation, aspect ratio will be preserved
   // when the presentation is scaled to fit different resolutions. Can be
@@ -78,11 +141,11 @@ Reveal.initialize({
 
   // Optional libraries used to extend on reveal.js
   dependencies: [
-      { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-      { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-      { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: '../../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: '../../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: '../../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
       
-      { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-      { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+      { src: '../../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: '../../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
   ]
 });</script></body></html>

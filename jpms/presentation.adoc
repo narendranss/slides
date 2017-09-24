@@ -1,0 +1,90 @@
+= Java 9 Modules
+
+include::../_shared/header.adoc[]
+include::../_shared/highlight.js.adoc[]
+
+== Key Items
+1. Module in Java
+2. Modular JDK
+3. Modularity Maturity Model
+4. Working of Module System
+5. Migration to Java 9
+
+== Module in Java
+Everything is a module in Java 9.
+
+== Modular JDK
+image::images/platform-modules.png[role="diagram"]
+
+== Working of Module System
+
+=== Module Path & Module Resolution
+All modules should be placed in the Module path. Entire classpath is considered as one single "Unnamed" Module.
+
+Types of Module Resolution
+
+* Compile Time Resolution
+* Run Time Resolution
+
+=== Cyclic Dependencies
+Add Image for Cyclic Dependency & Resolution
+
+=== Split Packages
+Add Image for Split package
+
+=== Impact on Reflection
+Add Image of Reflection
+
+=== Implicit Dependency
+
+=== Optional Dependency
+
+=== Versioning Modules
+
+=== Testing Modules
+
+
+=== Types of Modules
+image::images/module-types.jpg[role="diagram"]
+
+* Automatic Modules
+* Unnamed Modules
+* Open Modules
+
+=== Other kind of Classification
+* Aggregator Module
+* Incubator Modules
+
+=== Layers
+Images of Layers
+Boot Layer
+Application Layers
+Parent Layer, Configuration
+* System Modules
+* Platform Modules
+* Application Modules
+
+=== Modularity Rail Road Diagram
+image::images/module-configuration.png[role="diagram"]
+
+
+== Migration to Java 9
+
+=== Important Tools
+* jshell
+* jdeps
+* jLink
+* jmod
+
+=== Tool Enhancements
+* javac
+* java
+* jar
+* javadoc
+
+=== Type of Artifacts
+* MR Jar
+* JMod
+* JImage
+
+include::../_shared/footer.adoc[]
