@@ -70,21 +70,5 @@ image::images/module-configuration.png[role="diagram"]
 
 == Migration to Java 9
 
-=== Important Tools
-* jshell
-* jdeps
-* jLink
-* jmod
-
-=== Tool Enhancements
-* javac
-* java
-* jar
-* javadoc
-
-=== Type of Artifacts
-* MR Jar
-* JMod
-* JImage
 
 include::../_shared/footer.adoc[]
