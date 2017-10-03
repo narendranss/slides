@@ -1,0 +1,37 @@
+== Goals of JPMS
+* Strong Encapsulation
+* Reliable Configuration
+* Scalable Java Platform
+* Greater Platform Integrity
+* Improved Performance
+
+[NOTE.speaker]
+--
+Strong Encapsulation:
+
+Until Java 9, all classes in the classpath is visible and accessible to all other classes during Runtime. There is no mechanism by which few classes of module can be isolated and encapsulated.
+
+Encapsulation of private fields and method can be broken with reflection. 
+
+The Existing encapsulation is not strong enough at runtime and it is brittle.
+
+Reliable Configuration:
+
+Despite various module systems like OSGi, JBoss Modules offers such isolations, there is no way we could check the validity of the configuration at Compile time. 
+
+Say if a module XYZ exports a package in version 1.0 and we did create a dependency of it on another module ABC and in version 2.0 of XYZ module if the package is no more exported, the configuration gets broken. The existing configuration becomes invalid. 
+
+We cannot rely on a configuration which may or may not be valid at runtime. 
+
+Scalable Java Platform:
+
+JDK itself has be broken down into various modules and we can create JDK platform specific images with only modules which is being used by application there by reducing the scale of our Application we develop.
+
+Greater Platform Integrity:
+
+Post Strong Encapsulation and Reliable Configuration, every module could maintain its privacy. Since this privacy is not possible the consumer of the APIs which we expose also consume few APIs which is not exposed for general use. It creates lot of problems even if we change the "not exposed APIs"
+
+Improved Performance:
+
+Lazy loading of modules and avoid loading of modules which is not used in the main application may not be possible without JPMS.
+--

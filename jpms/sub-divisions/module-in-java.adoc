@@ -1,0 +1,48 @@
+== Module in Java
+Everything is a module in Java 9.
+
+Demo Time!!!
+
+[NOTE.speaker]
+--
+The classpath despite they work, is present only for migration. Once we migrate all our components from classpath to "module path", the classpath is no more required. The classloading will happen from "module path".
+
+Show Audience how to create a simple Module in Java 9.
+
+1. Show only "exported" packages is accessible.
+
+2. Show Neither the "Top Package" nor the "Sub Package" is accessible.
+
+3. Tell what is an SPI - Service Provider Interface.
+
+SPI resembles the bridge pattern. 
+
+In bridge pattern both the API Implementation and API Client can be changed independently without affecting the other, while pattern like Strategy can change only the API Implementation. While Strategy is predominently used by Application developers for Dependency Injection (Via programming to an interface), Bridges or Adapters are mostly used by frameworks.
+
+a. show how to build a simple SPI with public constructor: 
+Ensure that the audience see that the non exported Implementation is made accessible to the consumer of the SPI by Module System and tell them that even via reflection accessing the implementation is not possible.
+
+b. show how to build a SPI factory with provider method: 
+When binding and loading the SPI implementation, a new object is always created. By providing a SPI factory we can control the object creation for SPI implementation.
+
+--
+
+=== Notable Restrictions
+[NOTE.speaker]
+--
+There are 2 notable restriction,
+1. Cyclic Dependency is not possible.
+2. Split package is not allowed.
+
+Having these restrictions increases reliability of modules which we develop in JPMS.
+--
+
+=== Cyclic Dependencies
+No Cycles in Dependency is allowed in JPMS
+
+image::images/cyclic-dependency.png[role="diagram"]
+
+=== Split Packages
+No two modules can have same package either it is exported or not.
+
+image::images/split-packages.png[role="diagram"]

@@ -1,0 +1,8 @@
+== Modular JDK
+image::images/platform-modules.png[role="diagram"]
+[NOTE.speaker]
+--
+The JDK itself has be split into various modules based on Java Platform Module System.
+Thereby if a module is not used in JDK, it is no more going to get loaded in your "module paths" and "class paths".
+While we create an JDK Image with Jlink tool, it is no more going to be present in the image.
+--

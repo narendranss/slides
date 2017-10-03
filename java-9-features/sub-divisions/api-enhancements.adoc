@@ -1,0 +1,112 @@
+== API Enhancements
+There are various small changes. Even if we don't leverage JPMS, once we onboard Java 9, we can make use of these small enhancements immediately.
+
+=== Collection Factories
+----
+/* Comment sections would break ... */
+List<Integer> listOfNumbers = List.of(1, 2, 3, 4, 5
+                                        /*, null*/);
+
+Set<Integer> setOfNumbers = Set.of(1, 2, 3, 4, 5/*, 1*/);
+
+Map<String, String> mapOfString =
+    Map.of("key1", "value1", "key2", "value2");
+
+Map<String, String> moreMapOfString =
+    Map.ofEntries(
+        Map.entry("key1", "value1"),
+        Map.entry("key2", "value2")/*,
+        Map.entry("key1", "value3")*/
+);
+----
+[NOTE.speaker]
+--
+
+--
+
+
+=== Stream Enhancements
+----
+Stream.of("a", "b", "c", "", "e")
+                .takeWhile(s -> !s.isEmpty())
+                .forEach(System.out::print);
+
+Stream.of("a", "b", "c", "de", "f")
+                .dropWhile(s -> s.length() <= 1)
+                .forEach(System.out::print);
+
+Stream.iterate(1, i -> 2 * i)
+                .filter(i->i<=10)
+                .forEach(System.out::println);
+
+Stream.iterate(1, i -> i <= 10, i -> 2 * i)
+                .forEach(System.out::println);
+----
+
+[NOTE.speaker]
+--
+
+--
+
+=== Try with Resource
+----
+FileReader fileReader 
+                  = new FileReader(new File(fileURI));
+BufferedReader bufferedReader 
+                  = new BufferedReader(fileReader);
+try (fileReader; bufferedReader) {
+
+    String line = "";
+    while ((line = bufferedReader.readLine()) != null) {
+        fileContent =line;
+    }
+}
+----
+
+[NOTE.speaker]
+--
+
+--
+
+=== Diamond Operator
+----
+<T> Box<T> createBox(T content) {
+    // we have to put the `T` here :(
+    return new Box<T>(content) { };
+}
+
+<T> Box<T> createBox(T content) {
+    // Java 9 can infer `T` 
+    // because it is a denotable type
+    return new Box<>(content) { };
+}
+
+Box<?> createCrazyBox(Object content) {
+    List<?> innerList = Arrays.asList(content);
+    // we can't do the following 
+    // because the inferred type is non-denotable
+    return new Box<List<?>>(innerList) { };
+}
+----
+
+[NOTE.speaker]
+--
+
+--
+
+=== Deprecated Annotation Enhancement
+----
+@Deprecated(since = "3.0")
+public class Asset {
+
+    @Deprecated(since = "1.0", forRemoval=true)
+    public void getAssertValue() {
+
+    }
+}
+----
+
+[NOTE.speaker]
+--
+http://vojtechruzicka.com/java-9-enhanced-deprecation/
+--

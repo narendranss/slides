@@ -3,72 +3,50 @@
 include::../_shared/header.adoc[]
 include::../_shared/highlight.js.adoc[]
 
+[NOTE.speaker]
+--
+What is a Modularity?
+Modularity is the degree to which a system's components may be separated and recombined.
+
+What is a Module?
+A basic unit of the the system which can be separated and recombined.
+--
+
+
 == Key Items
-1. Module in Java
+1. Goals of JPMS
 2. Modular JDK
 3. Modularity Maturity Model
-4. Working of Module System
-5. Migration to Java 9
+4. Module in Java
+5. Working of Module System
+6. Layers
+7. Migration to Java 9
 
-== Module in Java
-Everything is a module in Java 9.
+include::sub-divisions/goals-of-jpms.adoc[]
 
-== Modular JDK
-image::images/platform-modules.png[role="diagram"]
+include::sub-divisions/modular-jdk.adoc[]
 
-== Working of Module System
+include::sub-divisions/modularity-maturity-model.adoc[]
 
-=== Module Path & Module Resolution
-All modules should be placed in the Module path. Entire classpath is considered as one single "Unnamed" Module.
+include::sub-divisions/module-in-java.adoc[]
 
-Types of Module Resolution
+include::sub-divisions/working-of-module-system.adoc[]
 
-* Compile Time Resolution
-* Run Time Resolution
-
-=== Cyclic Dependencies
-Add Image for Cyclic Dependency & Resolution
-
-=== Split Packages
-Add Image for Split package
-
-=== Impact on Reflection
-Add Image of Reflection
-
-=== Implicit Dependency
-
-=== Optional Dependency
-
-=== Versioning Modules
-
-=== Testing Modules
-
-
-=== Types of Modules
-image::images/module-types.jpg[role="diagram"]
-
-* Automatic Modules
-* Unnamed Modules
-* Open Modules
-
-=== Other kind of Classification
-* Aggregator Module
-* Incubator Modules
-
-=== Layers
-Images of Layers
-Boot Layer
-Application Layers
-Parent Layer, Configuration
-* System Modules
-* Platform Modules
-* Application Modules
+include::sub-divisions/layering.adoc[]
 
 === Modularity Rail Road Diagram
 image::images/module-configuration.png[role="diagram"]
 
 
-== Migration to Java 9
-
+[NOTE.speaker]
+--
+1. Show a sample REST Service dependencies.
+2. Show how they work in classpath
+3. Show how to Analyze Dependencies to make a move to module path.
+  a. with maven dependency tool
+  b. with Jdeps
+4.Show to deal with reflection issues
+5.Show how to derive module name from artifact and manifest.mf file.
+--
 
 include::../_shared/footer.adoc[]

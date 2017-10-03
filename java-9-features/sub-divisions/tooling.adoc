@@ -1,0 +1,134 @@
+[transition=zoom, %notitle]
+== Tooling
+
+=== Important New Tools
+* jshell
+* jdeps
+* jlink
+* jmod
+* jdeprscan
+
+=== jshell
+REPL - Read, Evaluate, Print and Loop
+----
+> ~ jshell
+|  Welcome to JShell -- Version 9-ea
+|  For an introduction type: /help intro
+
+jshell> 3 + 4 * 7
+$1 ==> 31
+
+jshell> int add(int a, int b) {
+...>   return a+b;
+...> }
+|  created method add(int,int)
+
+jshell> add(25, $1)
+$3 ==> 56
+----
+
+[NOTE.speaker]
+--
+
+--
+
+
+=== jdeps
+----
+"C:\Program Files\Java\jdk-9\bin\jdeps" 
+-summary 
+guava-23.0.jar
+
+"C:\Program Files\Java\jdk-9\bin\jdeps" 
+--dot-output 
+-summary 
+guava-23.0.jar
+----
+
+[NOTE.speaker]
+--
+
+--
+
+=== jmod
+----
+"C:\Program Files\Java\jdk-9\bin\jmod" 
+create --class-path target\classes
+target\jmods\org.wildcraft.tooling.jmod
+----
+
+[NOTE.speaker]
+--
+
+--
+
+=== jlink
+----
+"C:\Program Files\Java\jdk-9\bin\jlink" 
+--module-path "%JAVA_HOME%\jmods";target\jmods 
+--add-modules org.wildcraft.tooling 
+--output target/executable
+----
+
+[NOTE.speaker]
+--
+
+--
+
+=== jdeprscan
+----
+"C:\Program Files\Java\jdk-9\bin\jdeprscan" 
+guava-23.0.jar
+
+"C:\Program Files\Java\jdk-9\bin\jdeprscan" 
+--release 9 
+--list
+----
+
+[NOTE.speaker]
+--
+
+--
+
+=== Tool Enhancements
+* javac
+* java
+* jar
+* javadoc
+
+=== javadoc
+Provides HTML 5 support and search facilities.
+
+image::images/javadoc-html5-example.png[role="diagram"]
+
+[NOTE.speaker]
+--
+http://download.java.net/java/jdk9/docs/api/overview-summary.html
+--
+
+=== Java Artifacts
+* jmod
+* jlink & jimage
+* MR jar for Java library release management
+
+=== MR jar
+----
+JAR content root
+  A.class
+  B.class
+  C.class
+  D.class
+  META-INF
+     MANIFEST.MF
+     versions
+        9
+           A.class
+           B.class
+        10
+           A.class
+----
+
+[NOTE.speaker]
+--
+
+--

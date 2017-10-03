@@ -1,0 +1,15 @@
+== Important Under the hood Changes
+
+=== Compact String
+
+[NOTE.speaker]
+--
+
+--
+
+=== Default GC Collector G1
+
+[NOTE.speaker]
+--
+
+--

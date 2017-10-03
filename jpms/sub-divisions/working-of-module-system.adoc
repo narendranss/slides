@@ -1,0 +1,104 @@
+== Working of Module System
+
+=== Module Path & Module Resolution
+All modules should be placed in the Module path. Entire classpath is considered as one single "Unnamed" Module.
+
+Types of Module Resolution
+
+* Compile Time Resolution
+* Run Time Resolution
+
+[NOTE.speaker]
+--
+Modules places in module path are only considered as modules. If a Java module despited designed with JPMS or a Jar places in classpath is considered only as normal modules.
+
+There are 2 types of Module resolution that takes place.
+1. Compile Time Resolution for checking Normal Dependency Validity.
+2. Run Time Resolution for SPI binding and loading.
+--
+
+=== Types of Modules
+image::images/module-types.jpg[role="diagram"]
+
+* Automatic Modules
+* Unnamed Modules
+* Open Modules
+
+=== Other kind of Classification
+* Aggregator Module
+* Incubator Modules
+
+=== Impact on Reflection
+image::images/impact-on-refections.png[role="diagram"]
+
+=== Automatic Module
+
+=== Upgrade an existing Module
+
+=== Implicit Dependency
+----
+module org.wildcraft.eaz {
+    exports org.wildcraft.eaz;
+}
+
+//daz does not just exports it,
+//It also exports eaz
+module org.wildcraft.daz {
+    exports org.wildcraft.daz;
+    requires transitive org.wildcraft.eaz;
+}
+
+//By depending on daz,
+//caz implicity depends on eaz
+module org.wildcraft.caz {
+    requires org.wildcraft.daz;
+}
+----
+
+[NOTE.speaker]
+--
+Many a times for accessing an API more that one module may be required to be imported. In order to avoid dropping the constraint to import so many modules on the consumer, we can create Implicit Dependencies of modules. So when only one module is dependent all its implicit modules also is available for the API consumer.
+--
+
+=== Optional Dependency
+----
+//gaz requires haz only at compile time
+//It also depends on iaz implicitly
+module org.wildcraft.gaz {
+    requires static org.wildcraft.haz;
+}
+
+//haz depends on iaz only at compile time
+//it also export iaz
+module org.wildcraft.haz {
+    exports org.wildcraft.haz;
+    requires transitive static org.wildcraft.iaz;
+}
+
+module org.wildcraft.iaz {
+    exports org.wildcraft.iaz;
+}
+----
+
+[NOTE.speaker]
+--
+Platform Provided Modules
+Sometimes the platform may have the module already and there is no requirement for us to package modules, in such cases optional dependencies can be used.
+
+In some cases module may be required only at compile time like a module holding compile time annotation, in such cases we can make the module optional.
+--
+
+=== Versioning Modules
+
+[NOTE.speaker]
+--
+There is no support of Versions yet in JPMS. Yet we could add version details to our modules, if required we can make use of it for loading the services.
+--
+
+=== Testing Modules
+
+[NOTE.speaker]
+--
+Only Black Box Unit Testing is possible with JPMS in place.
+In order to do white box testing, It requires us to either place the modules in classpath for testing or open the modules for testing.
+--

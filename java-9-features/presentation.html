@@ -21,9 +21,9 @@
 	}
 </script></div></section>
 <section id="_features_by_categories"><h2>Features by Categories</h2><div class="imageblock diagram" style=""><img src="images/java-9-features.png" alt="java 9 features"></div>
-<aside class="notes"><div class="paragraph"><p>Despite there are many features present in JDK 9, we will only see few features which might be frequently use in Java 9. We can categorize like&#8230;&#8203;</p></div></aside></section>
+<aside class="notes"><div class="paragraph"><p>Despite there are many features present in JDK 9, we will only see few features which might be frequently use in Java 9. We can categorize them as&#8230;&#8203;</p></div></aside></section>
 <section id="_notable_categories"><h2>Notable Categories</h2><div class="ulist"><ul><li><p>Tooling</p></li><li><p>API Enhancements</p></li><li><p>Important Under the hood Changes</p></li><li><p>New Standards</p></li></ul></div></section>
-<section><section id="_tooling" data-transition="zoom"><h2>Tooling</h2></section><section id="_important_new_tools"><h2>Important New Tools</h2><div class="ulist"><ul><li><p>jshell</p></li><li><p>jdeps</p></li><li><p>jLink</p></li><li><p>jmod</p></li><li><p>jdeprscan</p></li></ul></div></section><section id="_tool_enhancements"><h2>Tool Enhancements</h2><div class="ulist"><ul><li><p>javac</p></li><li><p>java</p></li><li><p>jar</p></li><li><p>javadoc</p></li></ul></div></section><section id="_jlink"><h2>jlink</h2></section><section id="_jshell"><h2>jshell</h2><div class="paragraph"><p>REPL - Read, Evaluate, Print and Loop</p></div>
+<section><section id="_tooling" data-transition="zoom"><h2>Tooling</h2></section><section id="_important_new_tools"><h2>Important New Tools</h2><div class="ulist"><ul><li><p>jshell</p></li><li><p>jdeps</p></li><li><p>jlink</p></li><li><p>jmod</p></li><li><p>jdeprscan</p></li></ul></div></section><section id="_jshell"><h2>jshell</h2><div class="paragraph"><p>REPL - Read, Evaluate, Print and Loop</p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code>&gt; ~ jshell
 |  Welcome to JShell -- Version 9-ea
 |  For an introduction type: /help intro
@@ -37,7 +37,44 @@ jshell&gt; int add(int a, int b) {
 |  created method add(int,int)
 
 jshell&gt; add(25, $1)
-$3 ==&gt; 56</code></pre></div></div></section><section id="_java_artifacts"><h2>Java Artifacts</h2><div class="ulist"><ul><li><p>jmod</p></li><li><p>jlink &amp; jimage</p></li><li><p>MR jar for Java library release management</p></li></ul></div></section></section>
+$3 ==&gt; 56</code></pre></div></div>
+<aside class="notes"></aside></section><section id="_jdeps"><h2>jdeps</h2><div class="listingblock"><div class="content"><pre class="highlight"><code>"C:\Program Files\Java\jdk-9\bin\jdeps"
+-summary
+guava-23.0.jar
+
+"C:\Program Files\Java\jdk-9\bin\jdeps"
+--dot-output
+-summary
+guava-23.0.jar</code></pre></div></div>
+<aside class="notes"></aside></section><section id="_jmod"><h2>jmod</h2><div class="listingblock"><div class="content"><pre class="highlight"><code>"C:\Program Files\Java\jdk-9\bin\jmod"
+create --class-path target\classes
+target\jmods\org.wildcraft.tooling.jmod</code></pre></div></div>
+<aside class="notes"></aside></section><section id="_jlink"><h2>jlink</h2><div class="listingblock"><div class="content"><pre class="highlight"><code>"C:\Program Files\Java\jdk-9\bin\jlink"
+--module-path "%JAVA_HOME%\jmods";target\jmods
+--add-modules org.wildcraft.tooling
+--output target/executable</code></pre></div></div>
+<aside class="notes"></aside></section><section id="_jdeprscan"><h2>jdeprscan</h2><div class="listingblock"><div class="content"><pre class="highlight"><code>"C:\Program Files\Java\jdk-9\bin\jdeprscan"
+guava-23.0.jar
+
+"C:\Program Files\Java\jdk-9\bin\jdeprscan"
+--release 9
+--list</code></pre></div></div>
+<aside class="notes"></aside></section><section id="_tool_enhancements"><h2>Tool Enhancements</h2><div class="ulist"><ul><li><p>javac</p></li><li><p>java</p></li><li><p>jar</p></li><li><p>javadoc</p></li></ul></div></section><section id="_javadoc"><h2>javadoc</h2><div class="paragraph"><p>Provides HTML 5 support and search facilities.</p></div>
+<div class="imageblock diagram" style=""><img src="images/javadoc-html5-example.png" alt="javadoc html5 example"></div>
+<aside class="notes"><div class="paragraph"><p><a href="http://download.java.net/java/jdk9/docs/api/overview-summary.html" class="bare">http://download.java.net/java/jdk9/docs/api/overview-summary.html</a></p></div></aside></section><section id="_java_artifacts"><h2>Java Artifacts</h2><div class="ulist"><ul><li><p>jmod</p></li><li><p>jlink &amp; jimage</p></li><li><p>MR jar for Java library release management</p></li></ul></div></section><section id="_mr_jar"><h2>MR jar</h2><div class="listingblock"><div class="content"><pre class="highlight"><code>JAR content root
+  A.class
+  B.class
+  C.class
+  D.class
+  META-INF
+     MANIFEST.MF
+     versions
+        9
+           A.class
+           B.class
+        10
+           A.class</code></pre></div></div>
+<aside class="notes"></aside></section></section>
 <section><section id="_api_enhancements"><h2>API Enhancements</h2><div class="paragraph"><p>There are various small changes. Even if we don&#8217;t leverage JPMS, once we onboard Java 9, we can make use of these small enhancements immediately.</p></div></section><section id="_collection_factories"><h2>Collection Factories</h2><div class="listingblock"><div class="content"><pre class="highlight"><code>/* Comment sections would break ... */
 List&lt;Integer&gt; listOfNumbers = List.of(1, 2, 3, 4, 5
                                         /*, null*/);
@@ -52,9 +89,60 @@ Map&lt;String, String&gt; moreMapOfString =
         Map.entry("key1", "value1"),
         Map.entry("key2", "value2")/*,
         Map.entry("key1", "value3")*/
-);</code></pre></div></div></section><section id="_stream_enhancements"><h2>Stream Enhancements</h2></section><section id="_try_with_resource"><h2>Try with Resource</h2></section><section id="_diamond_operator"><h2>Diamond Operator</h2></section><section id="_reactive_programming_flow_api"><h2>Reactive Programming Flow API</h2></section><section id="_deprecated_annotation_enhancement"><h2>Deprecated Annotation Enhancement</h2></section></section>
-<section><section id="_important_under_the_hood_changes"><h2>Important Under the hood Changes</h2></section><section id="_compact_string"><h2>Compact String</h2></section><section id="_default_gc_collector_g1"><h2>Default GC Collector G1</h2></section></section>
-<section><section id="_new_standards"><h2>New Standards</h2></section><section id="_http_api"><div class="paragraph"><p>HTTP API</p></div>
+);</code></pre></div></div>
+<aside class="notes"></aside></section><section id="_stream_enhancements"><h2>Stream Enhancements</h2><div class="listingblock"><div class="content"><pre class="highlight"><code>Stream.of("a", "b", "c", "", "e")
+                .takeWhile(s -&gt; !s.isEmpty())
+                .forEach(System.out::print);
+
+Stream.of("a", "b", "c", "de", "f")
+                .dropWhile(s -&gt; s.length() &lt;= 1)
+                .forEach(System.out::print);
+
+Stream.iterate(1, i -&gt; 2 * i)
+                .filter(i-&gt;i&lt;=10)
+                .forEach(System.out::println);
+
+Stream.iterate(1, i -&gt; i &lt;= 10, i -&gt; 2 * i)
+                .forEach(System.out::println);</code></pre></div></div>
+<aside class="notes"></aside></section><section id="_try_with_resource"><h2>Try with Resource</h2><div class="listingblock"><div class="content"><pre class="highlight"><code>FileReader fileReader
+                  = new FileReader(new File(fileURI));
+BufferedReader bufferedReader
+                  = new BufferedReader(fileReader);
+try (fileReader; bufferedReader) {
+
+    String line = "";
+    while ((line = bufferedReader.readLine()) != null) {
+        fileContent =line;
+    }
+}</code></pre></div></div>
+<aside class="notes"></aside></section><section id="_diamond_operator"><h2>Diamond Operator</h2><div class="listingblock"><div class="content"><pre class="highlight"><code>&lt;T&gt; Box&lt;T&gt; createBox(T content) {
+    // we have to put the `T` here :(
+    return new Box&lt;T&gt;(content) { };
+}
+
+&lt;T&gt; Box&lt;T&gt; createBox(T content) {
+    // Java 9 can infer `T`
+    // because it is a denotable type
+    return new Box&lt;&gt;(content) { };
+}
+
+Box&lt;?&gt; createCrazyBox(Object content) {
+    List&lt;?&gt; innerList = Arrays.asList(content);
+    // we can't do the following
+    // because the inferred type is non-denotable
+    return new Box&lt;List&lt;?&gt;&gt;(innerList) { };
+}</code></pre></div></div>
+<aside class="notes"></aside></section><section id="_deprecated_annotation_enhancement"><h2>Deprecated Annotation Enhancement</h2><div class="listingblock"><div class="content"><pre class="highlight"><code>@Deprecated(since = "3.0")
+public class Asset {
+
+    @Deprecated(since = "1.0", forRemoval=true)
+    public void getAssertValue() {
+
+    }
+}</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p><a href="http://vojtechruzicka.com/java-9-enhanced-deprecation/" class="bare">http://vojtechruzicka.com/java-9-enhanced-deprecation/</a></p></div></aside></section></section>
+<section><section id="_important_under_the_hood_changes"><h2>Important Under the hood Changes</h2></section><section id="_compact_string"><h2>Compact String</h2><aside class="notes"></aside></section><section id="_default_gc_collector_g1"><h2>Default GC Collector G1</h2><aside class="notes"></aside></section></section>
+<section><section id="_new_standards"><h2>New Standards</h2></section><section id="_reactive_programming_flow_api"><h2>Reactive Programming Flow API</h2><aside class="notes"></aside></section><section id="_http_api"><div class="paragraph"><p>HTTP API</p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code>/**
  * The HTTP API functions asynchronously
  * and synchronously. In
@@ -71,7 +159,8 @@ public static void main(String[] args) throws Exception {
         .body(HttpResponse.asString()))
     );
   Thread.sleep(999); // Give worker thread some time.
-}</code></pre></div></div></section></section></div></div><script src="../../reveal.js/lib/js/head.min.js"></script><script src="../../reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+}</code></pre></div></div>
+<aside class="notes"></aside></section></section></div></div><script src="../../reveal.js/lib/js/head.min.js"></script><script src="../../reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
 Reveal.initialize({
   // Display controls in the bottom right corner
   controls: true,

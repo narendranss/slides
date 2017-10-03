@@ -1,0 +1,26 @@
+== Module Maturity Models
+
+=== Current System
+image::images/mmm-1.png[role="diagram"]
+
+[NOTE.speaker]
+--
+Current systems like Maven helps us to create static modules.
+
+Frameworks like Spring help in making dependency injection possible to replace an API implementation with another one during compile time.
+
+System like OSGi facilitates Runtime Modularity with discoverability and by maintaining the life cycle of modules.
+--
+
+=== JPMS
+image::images/mmm-2.png[role="diagram"]
+
+[NOTE.speaker]
+--
+JPMS fits as shown in the current system.
+It has all potential to replace maven but it cannot without a repository like maven.
+
+It can provide facilities similar to DI.
+
+It provides runtime modularity but its support for discovery and life cycle maintenance of modules is limited. 
+--

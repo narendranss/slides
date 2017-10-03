@@ -1,0 +1,9 @@
+=== Layers
+Layers holds various modules.
+
+image::images/layer-n-classloader.png[role="diagram"]
+
+=== Configuration and multi layers
+In each layer one or more classloaders can be created based on Configuration.
+
+image::images/multilayer-n-multiparent.png[role="diagram"]

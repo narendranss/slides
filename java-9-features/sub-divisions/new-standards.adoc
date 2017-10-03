@@ -1,0 +1,39 @@
+== New Standards
+
+=== Reactive Programming Flow API
+
+
+[NOTE.speaker]
+--
+
+--
+
+[%notitle]
+=== HTTP API
+
+HTTP API
+
+----
+/**
+ * The HTTP API functions asynchronously 
+ * and synchronously. In
+ * asynchronous mode, 
+ * work is done in threads (ExecutorService).
+ */
+public static void main(String[] args) throws Exception {
+  HttpClient.getDefault()
+    .request(URI.create("https://www.exxcellent.de"))
+    .GET()
+    .responseAsync() // CompletableFuture :D
+    .thenAccept(httpResponse ->
+        out.println(httpResponse
+        .body(HttpResponse.asString()))
+    );
+  Thread.sleep(999); // Give worker thread some time.
+}
+----
+
+[NOTE.speaker]
+--
+
+--
