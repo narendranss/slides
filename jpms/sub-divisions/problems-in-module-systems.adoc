@@ -1,0 +1,33 @@
+=== Problems in Module Systems
+OSGI, JBoss Modules, Spring Dynamic Modules are few Modular Development Systems.
+
+We face following problems like,
+
+1. JAR hell / Classpath hell
+	a. shadowing
+	b. version conflict
+2. Issue with Unexpressible & Transitive Dependencies
+3. Complex Class Loading
+
+[NOTE.speaker]
+--
+Shadowing: 
+
+One Jar/Class shadows another jar/Class with same name
+Either Class path preference or Class Loader preference is required to avoid Shadowing.
+
+Version Conflict:
+
+Similar to Shadowing but 2 versions of same jar gets into the classpath due to their own dependencies, only one version of it can be loaded by classloader that leads to conflicts.
+
+Maven solves this conflict a bit, many a times, it required to be managed manually.
+
+Unexpressible Dependencies:
+
+Some dependencies are required at compile time but not at runtime, Maven solves this with phase of requirement for a dependency. OSGi still has this problem.
+
+Transitive Dependencies:
+
+Maven pulls all required Transitive dependency but system like OSGi are oblivious of such dependencies.
+
+--

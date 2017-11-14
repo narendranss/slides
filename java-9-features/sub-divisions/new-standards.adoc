@@ -1,7 +1,7 @@
 == New Standards
 
 === Reactive Programming Flow API
-
+image::images/reactive-programming.png[role="diagram"]
 
 [NOTE.speaker]
 --
@@ -35,5 +35,6 @@ public static void main(String[] args) throws Exception {
 
 [NOTE.speaker]
 --
-
+With HTTP Api, now we can make both make Sync and Async responses.
+It also supports HTTP 2.0 protocol, which is the binary based protocol.
 --

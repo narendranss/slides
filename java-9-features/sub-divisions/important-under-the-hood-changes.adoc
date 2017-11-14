@@ -2,14 +2,22 @@
 
 === Compact String
 
+String is no more made of Char Array but made of Byte Array.
+
 [NOTE.speaker]
 --
+Compact String is Enabled by default.
 
+Many Char in UTF-8 or UTF-16 do not occupy the 16 bits of Char type. Compact String avoids these unused wasted spaces, there by reducing the memory foot print required to store String.
 --
 
 === Default GC Collector G1
 
+image::images/GC-multiple-partitions-with-pointers.png[role="diagram"]
+
 [NOTE.speaker]
 --
+GC Collector creates many compartments in the RAM and also links memory references from one compartment to another compartment if they exists.
 
+GC takes places Compartment wise there by not stopping most of the other compartment from functioning.
 --

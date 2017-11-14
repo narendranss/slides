@@ -18,6 +18,7 @@ Despite there are many features present in JDK 9, we will only see few features 
 * API Enhancements
 * Important Under the hood Changes
 * New Standards
+* References
 
 include::sub-divisions/tooling.adoc[]
 
@@ -26,3 +27,5 @@ include::sub-divisions/api-enhancements.adoc[]
 include::sub-divisions/important-under-the-hood-changes.adoc[]
 
 include::sub-divisions/new-standards.adoc[]
+
+include::sub-divisions/references.adoc[]

@@ -46,3 +46,7 @@ image::images/cyclic-dependency.png[role="diagram"]
 No two modules can have same package either it is exported or not.
 
 image::images/split-packages.png[role="diagram"]
+
+=== No Multi Module Support
+We cannot have more than one module in an module artifact, either it is a jar or jmod file.
+

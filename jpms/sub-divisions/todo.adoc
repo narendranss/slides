@@ -1,0 +1,13 @@
+TODO:
+1. Automatic Module Example
+2. Upgrade Module Example
+3. Versioning Module Example - with Java 9 (CMD line)
+4. Testing Module
+5. Layer Examples
+
+
+6. Change Slide Background COLOR - DONE
+
+7. Variable Handles and Method Handles
+8. Spin Wait Hint - DONE
+9. Java doc Example

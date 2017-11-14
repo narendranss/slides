@@ -19,11 +19,14 @@
 		}
 		hljs.initHighlightingOnLoad();
 	}
-</script></div></section>
-<section id="_key_items"><h2>Key Items</h2><div class="olist arabic"><ol class="arabic"><li><p>Goals of JPMS</p></li><li><p>Modular JDK</p></li><li><p>Modularity Maturity Model</p></li><li><p>Module in Java</p></li><li><p>Working of Module System</p></li><li><p>Layers</p></li><li><p>Migration to Java 9</p></li></ol></div></section>
-<section id="_goals_of_jpms"><h2>Goals of JPMS</h2><div class="ulist"><ul><li><p>Strong Encapsulation</p></li><li><p>Reliable Configuration</p></li><li><p>Scalable Java Platform</p></li><li><p>Greater Platform Integrity</p></li><li><p>Improved Performance</p></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>Strong Encapsulation:</p></div>
-<div class="paragraph"><p>Until Java 9, all clsasses in the classpath is visible and accessible to all other classes during Runtime. There is no mechanism by which few classes of module can be isolated and encapsulated.</p></div>
+</script>
+<aside class="notes"><div class="paragraph"><p>What is a Modularity?
+Modularity is the degree to which a system&#8217;s components may be separated and recombined.</p></div>
+<div class="paragraph"><p>What is a Module?
+A basic unit of the the system which can be separated and recombined.</p></div></aside></div></section>
+<section id="_key_items"><h2>Key Items</h2><div class="olist arabic"><ol class="arabic"><li><p>Goals of JPMS</p></li><li><p>Problems in Module Systems</p></li><li><p>Modularity Maturity Model</p></li><li><p>Modular JDK</p></li><li><p>Module in Java</p></li><li><p>Working of Module System</p></li><li><p>Layers</p></li><li><p>Migration to Java 9</p></li></ol></div></section>
+<section><section id="_goals_of_jpms"><h2>Goals of JPMS</h2><div class="ulist"><ul><li><p>Strong Encapsulation</p></li><li><p>Reliable Configuration</p></li><li><p>Scalable Java Platform</p></li><li><p>Greater Platform Integrity</p></li><li><p>Improved Performance</p></li></ul></div><aside class="notes"><div class="paragraph"><p>Strong Encapsulation:</p></div>
+<div class="paragraph"><p>Until Java 9, all classes in the classpath is visible and accessible to all other classes during Runtime. There is no mechanism by which few classes of module can be isolated and encapsulated.</p></div>
 <div class="paragraph"><p>Encapsulation of private fields and method can be broken with reflection.</p></div>
 <div class="paragraph"><p>The Existing encapsulation is not strong enough at runtime and it is brittle.</p></div>
 <div class="paragraph"><p>Reliable Configuration:</p></div>
@@ -35,11 +38,19 @@
 <div class="paragraph"><p>Greater Platform Integrity:</p></div>
 <div class="paragraph"><p>Post Strong Encapsulation and Reliable Configuration, every module could maintain its privacy. Since this privacy is not possible the consumer of the APIs which we expose also consume few APIs which is not exposed for general use. It creates lot of problems even if we change the "not exposed APIs"</p></div>
 <div class="paragraph"><p>Improved Performance:</p></div>
-<div class="paragraph"><p>Lazy loading of modules and avoid loading of modules which is not used in the main application may not be possible without JPMS.</p></div></aside></section>
-<section id="_modular_jdk"><h2>Modular JDK</h2><div class="imageblock diagram" style=""><img src="images/platform-modules.png" alt="platform modules"></div>
-<aside class="notes"><div class="paragraph"><p>The JDK itself has be split into various modules based on Java Platform Module System.
-Thereby if a module is not used in JDK, it is no more going to get loaded in your "module paths" and "class paths".
-While we create an JDK Image with Jlink tool, it is no more going to be present in the image.</p></div></aside></section>
+<div class="paragraph"><p>Lazy loading of modules and avoid loading of modules which is not used in the main application may not be possible without JPMS.</p></div></aside></section><section id="_problems_in_module_systems"><h2>Problems in Module Systems</h2><div class="paragraph"><p>OSGI, JBoss Modules, Spring Dynamic Modules are few Modular Development Systems.</p></div>
+<div class="paragraph"><p>We face following problems like,</p></div>
+<div class="olist arabic"><ol class="arabic"><li><p>JAR hell / Classpath hell</p><div class="olist loweralpha"><ol class="loweralpha" type="a"><li><p>shadowing</p></li><li><p>version conflict</p></li></ol></div></li><li><p>Issue with Unexpressible &amp; Transitive Dependencies</p></li><li><p>Complex Class Loading</p></li></ol></div>
+<aside class="notes"><div class="paragraph"><p>Shadowing:</p></div>
+<div class="paragraph"><p>One Jar/Class shadows another jar/Class with same name
+Either Class path preference or Class Loader preference is required to avoid Shadowing.</p></div>
+<div class="paragraph"><p>Version Conflict:</p></div>
+<div class="paragraph"><p>Similar to Shadowing but 2 versions of same jar gets into the classpath due to their own dependencies, only one version of it can be loaded by classloader that leads to conflicts.</p></div>
+<div class="paragraph"><p>Maven solves this conflict a bit, many a times, it required to be managed manually.</p></div>
+<div class="paragraph"><p>Unexpressible Dependencies:</p></div>
+<div class="paragraph"><p>Some dependencies are required at compile time but not at runtime, Maven solves this with phase of requirement for a dependency. OSGi still has this problem.</p></div>
+<div class="paragraph"><p>Transitive Dependencies:</p></div>
+<div class="paragraph"><p>Maven pulls all required Transitive dependency but system like OSGi are oblivious of such dependencies.</p></div></aside></section></section>
 <section><section id="_module_maturity_models"><h2>Module Maturity Models</h2></section><section id="_current_system"><h2>Current System</h2><div class="imageblock diagram" style=""><img src="images/mmm-1.png" alt="mmm 1"></div>
 <aside class="notes"><div class="paragraph"><p>Current systems like Maven helps us to create static modules.</p></div>
 <div class="paragraph"><p>Frameworks like Spring help in making dependency injection possible to replace an API implementation with another one during compile time.</p></div>
@@ -48,7 +59,13 @@ While we create an JDK Image with Jlink tool, it is no more going to be present 
 It has all potential to replace maven but it cannot without a repository like maven.</p></div>
 <div class="paragraph"><p>It can provide facilities similar to DI.</p></div>
 <div class="paragraph"><p>It provides runtime modularity but its support for discovery and life cycle maintenance of modules is limited.</p></div></aside></section></section>
-<section><section id="_module_in_java"><h2>Module in Java</h2><div class="paragraph"><p>Everything is a module in Java 9.</p></div><div class="paragraph"><p>Demo Time.</p></div><aside class="notes"><div class="paragraph"><p>The classpath despite they work, is present only for migration. Once we migrate all our components from classpath to "module path", the classpath is no more required. The classloading will happen from "module path".</p></div>
+<section id="_modular_jdk"><h2>Modular JDK</h2><div class="imageblock diagram" style=""><img src="images/platform-modules.png" alt="platform modules"></div>
+<aside class="notes"><div class="paragraph"><p>New Languages like Ceylon, TypeScript and new Frameworks like Angular 2/4 supports provides first class support for Modules. It itself are modular by nature.</p></div>
+<div class="paragraph"><p>Why not JDK?</p></div>
+<div class="paragraph"><p>The JDK itself has be split into various modules based on Java Platform Module System.
+Thereby if a module is not used in JDK, it is no more going to get loaded in your "module paths" and "class paths".
+While we create an JDK Image with Jlink tool, it is no more going to be present in the image.</p></div></aside></section>
+<section><section id="_module_in_java"><h2>Module in Java</h2><div class="paragraph"><p>Everything is a module in Java 9.</p></div><div class="paragraph"><p>Demo Time!!!</p></div><aside class="notes"><div class="paragraph"><p>The classpath despite they work, is present only for migration. Once we migrate all our components from classpath to "module path", the classpath is no more required. The classloading will happen from "module path".</p></div>
 <div class="paragraph"><p>Show Audience how to create a simple Module in Java 9.</p></div>
 <div class="olist arabic"><ol class="arabic"><li><p>Show only "exported" packages is accessible.</p></li><li><p>Show Neither the "Top Package" nor the "Sub Package" is accessible.</p></li><li><p>Tell what is an SPI - Service Provider Interface.</p></li></ol></div>
 <div class="paragraph"><p>SPI resembles the bridge pattern.</p></div>
@@ -60,7 +77,7 @@ When binding and loading the SPI implementation, a new object is always created.
 2. Split package is not allowed.</p></div>
 <div class="paragraph"><p>Having these restrictions increases reliability of modules which we develop in JPMS.</p></div></aside></section><section id="_cyclic_dependencies"><h2>Cyclic Dependencies</h2><div class="paragraph"><p>No Cycles in Dependency is allowed in JPMS</p></div>
 <div class="imageblock diagram" style=""><img src="images/cyclic-dependency.png" alt="cyclic dependency"></div></section><section id="_split_packages"><h2>Split Packages</h2><div class="paragraph"><p>No two modules can have same package either it is exported or not.</p></div>
-<div class="imageblock diagram" style=""><img src="images/split-packages.png" alt="split packages"></div></section></section>
+<div class="imageblock diagram" style=""><img src="images/split-packages.png" alt="split packages"></div></section><section id="_no_multi_module_support"><h2>No Multi Module Support</h2><div class="paragraph"><p>We cannot have more than one module in an module artifact, either it is a jar or jmod file.</p></div></section></section>
 <section><section id="_working_of_module_system"><h2>Working of Module System</h2></section><section id="_module_path_module_resolution"><h2>Module Path &amp; Module Resolution</h2><div class="paragraph"><p>All modules should be placed in the Module path. Entire classpath is considered as one single "Unnamed" Module.</p></div>
 <div class="paragraph"><p>Types of Module Resolution</p></div>
 <div class="ulist"><ul><li><p>Compile Time Resolution</p></li><li><p>Run Time Resolution</p></li></ul></div>
@@ -68,7 +85,7 @@ When binding and loading the SPI implementation, a new object is always created.
 <div class="paragraph"><p>There are 2 types of Module resolution that takes place.
 1. Compile Time Resolution for checking Normal Dependency Validity.
 2. Run Time Resolution for SPI binding and loading.</p></div></aside></section><section id="_types_of_modules"><h2>Types of Modules</h2><div class="imageblock diagram" style=""><img src="images/module-types.jpg" alt="module types"></div>
-<div class="ulist"><ul><li><p>Automatic Modules</p></li><li><p>Unnamed Modules</p></li><li><p>Open Modules</p></li></ul></div></section><section id="_other_kind_of_classification"><h2>Other kind of Classification</h2><div class="ulist"><ul><li><p>Aggregator Module</p></li><li><p>Incubator Modules</p></li></ul></div></section><section id="_impact_on_reflection"><h2>Impact on Reflection</h2><div class="imageblock diagram" style=""><img src="images/impact-on-refections.png" alt="impact on refections"></div></section><section id="_implicit_dependency"><h2>Implicit Dependency</h2><div class="listingblock"><div class="content"><pre class="highlight"><code>module org.wildcraft.eaz {
+<div class="ulist"><ul><li><p>Automatic Modules</p></li><li><p>Unnamed Modules</p></li><li><p>Open Modules</p></li></ul></div></section><section id="_other_kind_of_classification"><h2>Other kind of Classification</h2><div class="ulist"><ul><li><p>Aggregator Module</p></li><li><p>Incubator Modules</p></li></ul></div></section><section id="_impact_on_reflection"><h2>Impact on Reflection</h2><div class="imageblock diagram" style=""><img src="images/impact-on-refections.png" alt="impact on refections"></div></section><section id="_automatic_module"><h2>Automatic Module</h2></section><section id="_upgrade_an_existing_module"><h2>Upgrade an existing Module</h2></section><section id="_implicit_dependency"><h2>Implicit Dependency</h2><div class="listingblock"><div class="content"><pre class="highlight"><code>module org.wildcraft.eaz {
     exports org.wildcraft.eaz;
 }
 

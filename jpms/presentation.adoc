@@ -15,18 +15,21 @@ A basic unit of the the system which can be separated and recombined.
 
 == Key Items
 1. Goals of JPMS
-2. Modular JDK
+2. Problems in Module Systems
 3. Modularity Maturity Model
-4. Module in Java
-5. Working of Module System
-6. Layers
-7. Migration to Java 9
+4. Modular JDK
+5. Module in Java
+6. Working of Module System
+7. Layers
+8. Migration to Java 9
 
 include::sub-divisions/goals-of-jpms.adoc[]
 
-include::sub-divisions/modular-jdk.adoc[]
+include::sub-divisions/problems-in-module-systems.adoc[]
 
 include::sub-divisions/modularity-maturity-model.adoc[]
+
+include::sub-divisions/modular-jdk.adoc[]
 
 include::sub-divisions/module-in-java.adoc[]
 

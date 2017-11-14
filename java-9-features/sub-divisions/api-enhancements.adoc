@@ -21,7 +21,7 @@ Map<String, String> moreMapOfString =
 ----
 [NOTE.speaker]
 --
-
+Collection Factories Create Immutable Collections, they are not just syntactic sugar but also use less memory than that of the other means of Creating Immutable Collections.
 --
 
 
@@ -45,7 +45,8 @@ Stream.iterate(1, i -> i <= 10, i -> 2 * i)
 
 [NOTE.speaker]
 --
-
+takewhile, dropwhile, lambdas in iterator are few enhancement made in Stream API.
+These methods are also very useful for reactive programming.
 --
 
 === Try with Resource
@@ -65,7 +66,10 @@ try (fileReader; bufferedReader) {
 
 [NOTE.speaker]
 --
+Try with Resource was introduced to ensure Auto Resource Managament(ARM).
+It was introduced in Java 7, since then to leverage ARM, the resources has to be created with try block. it cannot be created outside it.
 
+Now it has been allowed, but only a final or an effectively final resource object alone can be used with ARM.
 --
 
 === Diamond Operator
@@ -91,7 +95,9 @@ Box<?> createCrazyBox(Object content) {
 
 [NOTE.speaker]
 --
+Diamond Operators were introduced in Java 7, it tried to remove the mentioning of Type Argument in many places were it can infer from variables / Target Types. In some places like Anonymous class where such inference is apparently possible was not inferrable by Compiler in earlier versions, the compiler now can infer the Type arguments in Anonymous class.
 
+Type Inference is possible only when it can be denotable, usage of unbounded wildcard makes the type to be non denotable, hence in such places diamond operator cannot be used. Beware of such pitfalls!!!
 --
 
 === Deprecated Annotation Enhancement
@@ -108,5 +114,30 @@ public class Asset {
 
 [NOTE.speaker]
 --
+
+In JDK since denotes the JDK version.
+In JDK if for removal is true then the Deprecated Class or method will be removed in next release.
+
+Reference:
+
 http://vojtechruzicka.com/java-9-enhanced-deprecation/
+--
+
+=== SafeVarargs
+It is now applicable to private non final methods.
+----
+@SafeVarargs
+private <T> Optional<T> privateNonStatic(T... args) {
+    if (args.length == 0)
+        return Optional.empty();
+    else
+        return Optional.of(args[0]);
+}
+----
+[NOTE.speaker]
+--
+SafeVarargs was not applicable to methods which cannot be overriden.
+In other words, it is only applicable to static, final methods & constructors.
+For no apparent reason, we cannot use them in private non final methods, which also cannot be overriden.
+This is fixed in java 9.
 --
